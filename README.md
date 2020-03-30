@@ -1,2 +1,3 @@
-# ajax-playground-cavalloluca
-ajax-playground-cavalloluca created by GitHub Classroom
+# Random user genetator
+### Progetto svolto nell'anno scolastico 2019/2020
+
