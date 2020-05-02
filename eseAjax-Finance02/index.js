@@ -17,7 +17,7 @@ $(document).ready(function () {
     txtSearch.on("keyup", function () {
         cmbSymbol.prop("selectedIndex", "-1");
         getSymbolSearch(this.value);
-    })
+    });
 });
 
 function getGlobalQuotes(symbol) {
