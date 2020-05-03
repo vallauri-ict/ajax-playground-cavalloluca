@@ -1,0 +1,51 @@
+html, body {
+  background-color: lightblue;
+  text-align: center;
+}
+
+#navbar {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3px;
+}
+
+#wrapper {
+    width: 85%;
+    border: 1px solid black;
+    margin: 30px auto;
+    background-color: white;
+    box-shadow: 0 0 20px 7px black;
+    text-align: center;
+}
+
+.table {
+    table-layout: fixed;
+    width: 100%;
+    margin: 0px !important;
+}
+
+.table, th, td {
+  border: 1px solid black;
+}
+
+th {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    /*height: 60px;
+    line-height: 60px;*/
+}
+
+td {
+  height: 30px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+#txtSearch {
+    margin: 0px!important;
+}
