@@ -55,3 +55,9 @@ h1{
 body div{
     font-size: 15pt;
 }
+
+
+#download {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}

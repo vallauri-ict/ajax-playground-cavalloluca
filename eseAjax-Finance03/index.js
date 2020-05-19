@@ -1,17 +1,20 @@
 "use script"
 let _table;
+var myChart;
+let _btnDownload;
+
 $(document).ready(function () {
     let cmbSymbol = $("#cmbAziende");
     let txtSearch = $("#txtSearch");
     let cmbRank = $("#cmbRank");
     _table = $("#table");
-    
+
     $("#wrapper").hide();
     
     cmbSymbol.prop("selectedIndex", "-1");
 
     caricaCmbRank(cmbRank);
-    let timer = setTimeout(function () {
+    setTimeout(function () {
         cmbRank.prop("selectedIndex", "-1");
     }, 500);
 
@@ -31,9 +34,10 @@ $(document).ready(function () {
     cmbRank.on("change", function () {
         cmbSymbol.prop("selectedIndex", "-1");
         txtSearch.prop("value", "");
-        getGrafico(this.value);
+        
         $(".table").remove();
         $("#wrapper").hide();
+        getGrafico(this.value);
     });
 });
 
@@ -67,7 +71,7 @@ function getSymbolSearch(str) {
                 if (bestMatches.length == 0) {
                     $("#wrapper").hide();
                     $(".table").remove();
-                    let timer = setTimeout(function () {
+                    setTimeout(function () {
                         alert("Nessuna azienda corrispondente alle ricerche.");
                     }, 700);
                 }
@@ -94,8 +98,29 @@ function getSymbolSearch(str) {
 
 function getGrafico(strRank) {
     $("#grafico").children().remove();
-    $("<label>").text("Grafico").appendTo("#grafico");
-    $("<canvas>").prop("id","myChart").css({"width":"400", "height":"400"}).appendTo("#grafico");
+
+    $("<canvas>").prop("id", "myChart").css({ "width": "400", "height": "400", }).appendTo("#grafico");
+
+    //download
+    _btnDownload = $("<a>").prop({
+        "id": "download",
+        "download": "Grafico.jpg",
+        "href": "",
+        "class": "btn btn-primary float-right bg-flat-color-1",
+        "title": "Download grafico"
+    }).html("Download grafico ").appendTo("#grafico");
+    $("<i>").addClass("fa fa-download").appendTo("#download");
+
+    $("<br>").appendTo("#grafico");
+
+    //drive
+    $("<a>").prop({
+        "id": "upload",
+        "class": "btn btn-primary float-right bg-flat-color-1",
+        "title": "Upload on drive"
+    }).html("Upload on drive").appendTo("#grafico");
+    $("<i>").addClass("fab fa-google-drive").appendTo("#upload");
+
     $.getJSON("http://localhost:3000/chart", function (dataChart) {
         $.getJSON("http://localhost:3000/sectors", function (dataSectors) {
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -118,9 +143,12 @@ function getGrafico(strRank) {
                 }
                 i++;
             }
-            var myChart = new Chart(ctx, dataChart);
+            myChart = new Chart(ctx, dataChart);
         });
-    });
+        setTimeout(function () {
+            _btnDownload.prop("href", myChart.toBase64Image());
+        }, 500);
+    }); 
 }
 
 function createHeadTableCmb(globalQuoteData) {
@@ -129,7 +157,7 @@ function createHeadTableCmb(globalQuoteData) {
     let GQData = Object.keys(globalQuoteData);
     let _tr = $("<tr>").appendTo(_table);
     for (let i = 0; i < GQData.length - 1; i++) {
-        let _th = $("<th>").text(GQData[i].substr(3).toUpperCase()).appendTo(_tr);
+         $("<th>").text(GQData[i].substr(3).toUpperCase()).appendTo(_tr);
     }
 }
 
@@ -139,7 +167,7 @@ function createHeadTableSearch(bestMatches) {
     let array = Object.keys(bestMatches);
     let _tr = $("<tr>").appendTo(_table);
     for (let i = 0; i < array[0].length; i++) {
-        let _th = $("<th>").text(array[i].substr(3).toUpperCase()).appendTo(_tr);
+        $("<th>").text(array[i].substr(3).toUpperCase()).appendTo(_tr);
     }
 }
 
@@ -154,4 +182,8 @@ function caricaCmbRank(cmbRank) {
                 }
             }
         });
+}
+
+function upload() {
+
 }
