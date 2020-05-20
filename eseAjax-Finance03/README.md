@@ -34,8 +34,9 @@ Contacts | Links
 ------------ | -------------
 School mail | l.cavallo.0928@vallauri.edu
 Private mail | caval.luca02@gmail.com
-Instagram | www.instagram.com/lucacavallo10_
-Website | http://lukii.altervista.org/
+Instagram | [Lucacavallo10_](https://www.instagram.com/lucacavallo10_/)
+Website | [lukii.altervista.org](http://lukii.altervista.org/)
 
-**4B INF IIS G.VALLAURI**  www.vallauri.edu
+
+**4B INF IIS G. VALLAURI**  www.vallauri.edu
 
