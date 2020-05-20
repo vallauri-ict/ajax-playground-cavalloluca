@@ -1,7 +1,6 @@
 "use script"
 let _table;
 var myChart;
-let _btnDownload;
 
 $(document).ready(function () {
     let cmbSymbol = $("#cmbAziende");
@@ -34,7 +33,6 @@ $(document).ready(function () {
     cmbRank.on("change", function () {
         cmbSymbol.prop("selectedIndex", "-1");
         txtSearch.prop("value", "");
-        
         $(".table").remove();
         $("#wrapper").hide();
         getGrafico(this.value);
@@ -99,27 +97,11 @@ function getSymbolSearch(str) {
 function getGrafico(strRank) {
     $("#grafico").children().remove();
 
-    $("<canvas>").prop("id", "myChart").css({ "width": "400", "height": "400", }).appendTo("#grafico");
-
-    //download
-    _btnDownload = $("<a>").prop({
-        "id": "download",
-        "download": "Grafico.jpg",
-        "href": "",
-        "class": "btn btn-primary float-right bg-flat-color-1",
-        "title": "Download grafico"
-    }).html("Download grafico ").appendTo("#grafico");
-    $("<i>").addClass("fa fa-download").appendTo("#download");
-
-    $("<br>").appendTo("#grafico");
-
-    //drive
-    $("<a>").prop({
-        "id": "upload",
-        "class": "btn btn-primary float-right bg-flat-color-1",
-        "title": "Upload on drive"
-    }).html("Upload on drive").appendTo("#grafico");
-    $("<i>").addClass("fab fa-google-drive").appendTo("#upload");
+    $("<canvas>").prop("id", "myChart").css({
+        "width": "400",
+        "height": "400",
+        "margin-bottom":"30px"
+    }).appendTo("#grafico");
 
     $.getJSON("http://localhost:3000/chart", function (dataChart) {
         $.getJSON("http://localhost:3000/sectors", function (dataSectors) {
@@ -127,7 +109,7 @@ function getGrafico(strRank) {
             let array = Object.keys(dataSectors[strRank]);
             for (let i = 0; i < array.length; i++) {
                 dataChart["data"]["labels"][i] = array[i];
-                dataChart["data"]["datasets"]["0"]["data"][i] = dataSectors[strRank][i];
+                dataChart["data"]["datasets"]["0"]["data"][i]= dataSectors[strRank][i];
             }
             dataChart["data"]["datasets"]["0"]["label"] = "Valori percentuali";
             let i = 0;
@@ -148,7 +130,32 @@ function getGrafico(strRank) {
         setTimeout(function () {
             _btnDownload.prop("href", myChart.toBase64Image());
         }, 500);
-    }); 
+    });
+
+    //drive
+    let _btnUpload=$("<a>").prop({
+        "id": "upload",
+        "class": "btn btn-primary float-right bg-flat-color-1",
+        "title": "Upload chart on drive"
+    }).addClass("btn btn - primary disabled")
+        .html("Upload on drive ").on("click", upload)
+        .appendTo("#grafico");
+    $("<i>").addClass("fab fa-google-drive").appendTo("#upload");
+
+    //download
+    let _btnDownload = $("<a>").prop({
+        "id": "download",
+        "download": "Grafico.jpg",
+        "href": "",
+        "class": "btn btn-primary float-right bg-flat-color-1",
+        "title": "Download chart",
+    }).html("Download ")
+        .on("click", function () {
+            _btnUpload.removeClass("btn btn - primary disabled");
+            _btnUpload.addClass("btn btn-primary float-right bg-flat-color-1");
+        })
+        .appendTo("#grafico");
+    $("<i>").addClass("fa fa-download").appendTo("#download");
 }
 
 function createHeadTableCmb(globalQuoteData) {
@@ -185,5 +192,5 @@ function caricaCmbRank(cmbRank) {
 }
 
 function upload() {
-
+    
 }
