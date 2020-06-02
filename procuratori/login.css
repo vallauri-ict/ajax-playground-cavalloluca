@@ -1,0 +1,91 @@
+body{
+	background-image: url(img/sfondo.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.container-fluid{
+	margin-top: 2%;
+}
+
+#title{
+	margin: 0px auto;
+	background-color:  rgba(0,0,0,0.5);
+	margin-bottom: 3%;
+}
+
+h1, h3
+{
+	text-align: center;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	color: lightblue;
+	padding: 5px;
+}
+
+h4{
+	font-size: 25pt;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	margin: 30px auto;
+	color:black;
+	font-weight: bold;
+}
+
+/* div dimensione normale */
+.divcontid{
+	background-color:  rgba(0,0,0,0.7);
+	height: 35%;
+	margin-top: 2%;
+	padding: 3%;
+}
+
+/* div errore username o password */
+.divcontidUP{
+	background-color:  rgba(0,0,0,0.7);
+	height: 52%;
+	margin-top: 2%;
+	padding: 3%;
+}
+
+/* div errore username e password */
+.divcontidDouble{
+	background-color:  rgba(0,0,0,0.7);
+	height: 70%;
+	margin-top: 2%;
+	padding: 3%;
+}
+
+/* div errore di accesso */
+.divcontidError{
+	background-color:  rgba(0,0,0,0.7);
+	height: 50%;
+	margin-top: 2%;
+	padding: 3%;
+}
+
+.icona-rossa{
+	color: #dc3545;
+	border:1px solid #dc3545; 
+	border-right:transparent;
+}
+
+.credenzialiMancanti{
+	padding: "3%";
+}
+
+#jumbotron{
+	background-color: rgb(65, 65, 207);
+	height: 85%;
+}
+
+#registrati{
+	cursor: pointer;
+	font-size: 14pt;
+	color: blue;
+	font-weight: bold;
+	margin-top: 30%;
+	background-color: black;
+	width: 25%;
+	text-align: center;
+	padding: 1%;
+}

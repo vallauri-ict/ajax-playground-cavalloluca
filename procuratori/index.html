@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>S.A.O.A.</title>	
+	
+	<link rel="icon"       href="img/logoUefa.png" type="image/png"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" charset="utf8"></script>
+	
+	<link rel="stylesheet" href="index.css">
+	<script src="libreria.js"></script>		
+	<script src="index.js"></script>	
+
+</head>
+
+<body>
+	<div id="wrapper" class="section">
+		<!-- navbar --> 
+		<div id="nav">
+			<nav id="mainNavbar" class="navbar navbar-expand-lg  bg-light navbar-dark bg-dark" >
+				
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto" id="ulNavbar" style="padding-right:0px; width:100%;">
+					
+					<li class="nav-item" class="separator" id="navItem1">
+						<a title="See your players" class="nav-link"> My players </a>
+					</li>
+					
+					<li class="nav-item" class="separator" id="navItem2"> 
+						<a title="Look at the list of other soccer agents" class="nav-link">Soccer agents</a>
+					</li>
+					
+					<li class="nav-item dropdown" class="separator">
+						<a title="See which club in this league you have players" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Show all league's teams
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" id="serieA">Serie A</a>
+							<a class="dropdown-item" id="liga">Liga </a>
+							<a class="dropdown-item" id="premierLeague">Premier League</a>
+						</div>
+					</li>
+					
+					<li id="liName"></li>
+
+					<li class="nav-item" id="liexit">
+						<span class="input-group-text bg-dark"> 
+							<i class="fas fa-sign-out-alt"> </i>
+							<a class="nav-link" id="aexit">Exit</a>
+						</span>
+					</li>
+
+				</ul>
+				</div>
+			</nav>
+		</div>
+
+		<!-- foto procuratore -->
+		<div id="foto"></div>
+		
+
+		<!-- Elenco my players -->
+		<div id="divPlayers">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>Surname</th>
+						<th>Name</th>
+						<th>Current team</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Elenco my players caratteristiche -->
+		<div id="divFeat"> </div>
+
+		<!-- Elenco tutti i procuratori  -->
+		<div id="divAgents">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>Surname Name</th>
+						<th>Nationality</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Elenco squadre -->
+		<div id="divSquadre">
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th></th>
+						<th> Team </th>
+						<th> City </th>
+						<th> Your players in this club </th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Elenco squadre caratteristiche -->
+		<div id="divTeam"></div>
+
+
+	</div>
+
+</body>
+</html>

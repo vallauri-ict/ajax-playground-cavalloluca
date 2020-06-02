@@ -1,0 +1,60 @@
+html{
+	background-image: url(img/schema.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 100%;
+}
+
+body{
+	margin: 2%;
+	background-color: transparent !important;
+}
+
+#mainNavbar{
+	margin: 2%;
+}
+
+#wrapper{
+	background-color: transparent !important;
+}
+
+/*
+#navbarSupportedContent > ul > li:nth-of-type(1) > a:after,
+#navbarSupportedContent > ul > li:nth-of-type(2) > a:after  {
+    content: "|";
+    padding-left: 20px;
+}*/
+
+#navbarSupportedContent > ul > li{
+	font-size: 14pt;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 28pt;
+}
+
+#navbarSupportedContent > ul > li> a:hover,
+#liexit > span:hover{
+	cursor: pointer;
+	color: red;
+}
+
+#serieA:hover,#liga:hover,#premierLeague:hover{
+	cursor: pointer;
+	color: blue;
+	font-weight: bold;
+}
+
+#liexit{
+	display: inline-block;
+}
+
+#divPlayers, #divAgents, #divSquadre{
+	background-color: rgba(204, 190, 190, 0.7);
+	margin: 2%;
+}
+
+#myPlayers{
+	font-size: 16pt;
+}
+
