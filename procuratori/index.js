@@ -12,8 +12,11 @@ $(document).ready(function() {
 	let _divSquadre= $("#divSquadre");
 	let _divAgents=$("#divAgents");
 	let _imgProc;
-	let _divFeat=$("#divFeat").css({"width":"50%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto"}).appendTo(_wrapper);
+	let _divFeat=$("<div>").css({"width":"50%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto"}).appendTo(_wrapper);
 	let _divTeam=$("#divTeam").css({"width":"50%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto"}).appendTo(_wrapper);
+	let _divAdd=$("<div>").css({"text-align":"center", "padding":"2%"}).appendTo(_divPlayers);
+	let _table;
+	let _divClickAdd=$("<div>").css({"width":"40%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto","text-align":"center"}).appendTo(_wrapper);;;
 
 	// nome e foto procuratore
 	let _richiestaNominativo = inviaRichiesta("get", "server/nomeProcuratore.php");
@@ -59,7 +62,7 @@ $(document).ready(function() {
 			nascondi();
 			_divPlayers.show();
 			
-			let _table = _divPlayers.find("tbody");
+			_table = _divPlayers.find("tbody");
 			_table.html("");
 			if(data.length == 0)
 				$("<td>").html("<b>There aren't players</b>.").appendTo(_table);
@@ -86,6 +89,12 @@ $(document).ready(function() {
 				}
 				_divPlayers.find("table").DataTable();
 			}
+			_divAdd.children().remove();
+			_divPlayers.children("input").remove();
+			$("<input type='button'>").val("Click here to add a new player in your list").on("click",function(){
+				aggiungi(_divAdd);
+			}).appendTo(_divPlayers).css({"font-weight":"bold", "background-color":"lightblue"});
+			
 		});
 	})
 
@@ -170,7 +179,7 @@ $(document).ready(function() {
 			_divFeat.show();
 			
 			_divFeat.find("p").remove();
-		    _divFeat=$("<div>").css({"width":"50%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto"}).appendTo(_wrapper);
+		    _divFeat.show();
 			$("<p>", {
 				"css": {"text-align":"center", "color":"white", "font-size":"16pt"},
 				"html" : "Id player: <b>" + data[0]["Id"] + "</b><br>" + 
@@ -283,9 +292,80 @@ $(document).ready(function() {
 			_divFeat.find("p").html("");
 			$("<p>", {
 				"css": {"text-align":"center", "color":"white", "font-size":"16pt"},
-				"html" : "Il calciatore è stato rimosso dalla tua lista."
+				"html" : "The player has been removed from your list."
 			}).appendTo(_divFeat);
 		});
+	}
+
+	function aggiungi(_divAdd){
+		_divPlayers.hide();
+		_divClickAdd.children().remove();
+		//_divClickAdd=$("<div>").css({"width":"40%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto","text-align":"center"}).appendTo(_wrapper);
+		_divClickAdd.show();
+		//cognome
+		$("<p>").html("Surname:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _cog=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//nome
+		$("<p>").html("Name:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _nome=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//codSquadra
+		$("<p>").html("CodTeam:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _codS=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//anno di nascita
+		$("<p>").html("Year of birth:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _anno=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//valore
+		$("<p>").html("Value (€):").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _valore=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//nazionalità
+		$("<p>").html("Nationality:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _nat=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//ruolo
+		$("<p>").html("Role:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _ruolo=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		//codCampionato
+		$("<p>").html("CodLeague:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+		let _codCamp=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+		$("<br>").appendTo(_divClickAdd);
+		
+		$("<input type='button'>").val("Add player!").on("click",function(){
+			clickAdd(_cog.val(),_nome.val(),_codS.val(),_anno.val(),_valore.val(),_nat.val(),_ruolo.val(),_codCamp.val());
+		}).appendTo(_divClickAdd).css({"font-weight":"bold", "background-color":"lightblue"});
+	}
+
+	function clickAdd(_cog,_nome,_codS,_anno,_valore,_nat,_ruolo,_codCamp){
+		if(_cog=="" || _nome=="" || _codS=="" || _anno=="" || _valore=="" || _nat=="" || _ruolo=="" || _codCamp=="")
+			alert("You must fill in all fields");
+		else{
+			let _addPlayer = inviaRichiesta("get", "server/inserisciPlayer.php", {
+				"cognome":_cog,"nome":_nome,"codSquadra":_codS,"anno":_anno,
+				"valore":_valore,"nazion":_nat,"ruolo":_ruolo,"codCampionato":_codCamp });
+	
+			_addPlayer.fail(function(jqXHR, test_status, str_error) {
+				if (jqXHR.status == 403) {  
+					window.location.href="login.html";
+				} 
+				else
+					error(jqXHR, test_status, str_error)
+			});
+			
+			_addPlayer.done(function (data) {
+				console.log(data);
+				/*$("<p>", {
+					"color":"black",
+					"css": {"text-align":"center", "color":"white", "font-size":"16pt"},
+					"html" : "The player was successfully added to your list."
+				}).appendTo(_divClickAdd);*/
+				_divClickAdd.find("input[type='text']").val("");
+			});
+		}
 	}
 
 	function nascondi(){
@@ -294,6 +374,7 @@ $(document).ready(function() {
 		_divSquadre.hide();
 		_divFeat.hide();
 		_divTeam.hide();
+		_divClickAdd.hide();
 	}
 	
 });
