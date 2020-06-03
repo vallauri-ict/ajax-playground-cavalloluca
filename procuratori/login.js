@@ -78,9 +78,9 @@ $(document).ready(function() {
 		}
 	}
 
-	_signIn.on("click",function(){
+	/*_signIn.on("click",function(){
 
-	});
+	});*/
 	
 	
 

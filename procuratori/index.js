@@ -300,43 +300,21 @@ $(document).ready(function() {
 	function aggiungi(_divAdd){
 		_divPlayers.hide();
 		_divClickAdd.children().remove();
-		//_divClickAdd=$("<div>").css({"width":"40%","background-color":"rgba(0,0,0,0.7)","margin":"0px auto","text-align":"center"}).appendTo(_wrapper);
 		_divClickAdd.show();
-		//cognome
-		$("<p>").html("Surname:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _cog=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//nome
-		$("<p>").html("Name:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _nome=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//codSquadra
-		$("<p>").html("CodTeam:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _codS=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//anno di nascita
-		$("<p>").html("Year of birth:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _anno=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//valore
-		$("<p>").html("Value (€):").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _valore=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//nazionalità
-		$("<p>").html("Nationality:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _nat=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//ruolo
-		$("<p>").html("Role:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _ruolo=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
-		//codCampionato
-		$("<p>").html("CodLeague:").css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
-		let _codCamp=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
-		$("<br>").appendTo(_divClickAdd);
+
+		let _cog,_nome,_codS,_anno,_valore,_nat,_ruolo,_codCamp;
+		let array1=[_cog,_nome,_codS,_anno,_valore,_nat,_ruolo,_codCamp];
+		let array2=["Surname:","Name:","CodTeam:","Year of birth:","Value (€):","Nationality:","Role:","CodLeague:"];
+
+		for(let i=0;i<array1.length;i++){
+			$("<p>").html(array2[i]).css({"display":"inline-block", "color":"white"}).appendTo(_divClickAdd);
+			array1[i]=$("<input type='text'>").css({"margin-left":"1%","margin-top":"1%"}).appendTo(_divClickAdd);
+			$("<br>").appendTo(_divClickAdd);
+		}
 		
 		$("<input type='button'>").val("Add player!").on("click",function(){
-			clickAdd(_cog.val(),_nome.val(),_codS.val(),_anno.val(),_valore.val(),_nat.val(),_ruolo.val(),_codCamp.val());
+			console.log(array1[0].val(),array1[1].val(),array1[2].val(),array1[3].val(),array1[4].val(),array1[5].val(),array1[6].val(),array1[7].val());
+			clickAdd(array1[0].val(),array1[1].val(),array1[2].val(),array1[3].val(),array1[4].val(),array1[5].val(),array1[6].val(),array1[7].val());
 		}).appendTo(_divClickAdd).css({"font-weight":"bold", "background-color":"lightblue"});
 	}
 
@@ -358,11 +336,7 @@ $(document).ready(function() {
 			
 			_addPlayer.done(function (data) {
 				console.log(data);
-				/*$("<p>", {
-					"color":"black",
-					"css": {"text-align":"center", "color":"white", "font-size":"16pt"},
-					"html" : "The player was successfully added to your list."
-				}).appendTo(_divClickAdd);*/
+				alert("The player was successfully added to your list.")
 				_divClickAdd.find("input[type='text']").val("");
 			});
 		}
