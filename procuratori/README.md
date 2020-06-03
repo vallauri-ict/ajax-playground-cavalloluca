@@ -1,7 +1,7 @@
 # **`CAVALLO LUCA`:horse:**
 ### Procuratori
 
-Questo progetto client-server è stato pensato e progettato per gestire i calciatori di alcuni procuratori, i quali per accedere devono inserire il proprio nominativo con la password "calcio".
+Questo progetto client-server è stato pensato e progettato per gestire i calciatori di alcuni procuratori presenti nel database, i quali per accedere devono inserire il proprio nominativo con la password "calcio".
 
 Una volta effettuto l'accesso, il procuratore può vedere la lista dei suoi giocatori e modificarla aggiungendone o rimuovendone. 
 Se si clicca su un giocatore in tabella si possono vedere i suoi dati e alcune sue caratteristiche e c'è il bottone per rimuovere qurl giocatore dalla propria lista.
