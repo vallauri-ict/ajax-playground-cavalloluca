@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 02, 2020 alle 18:52
+-- Creato il: Giu 03, 2020 alle 12:12
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.2.27
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_calciatori`
 --
+CREATE DATABASE IF NOT EXISTS `db_calciatori` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_calciatori`;
 
 -- --------------------------------------------------------
 
@@ -52,28 +54,35 @@ INSERT INTO `calciatori` (`ID`, `Cognome`, `Nome`, `CodSquadra`, `AnnoDiNascita`
 (4, 'Ronaldo', 'Cristiano', 'S01', 1985, '60.000.000', 'Portoghese', 'ATT', 'P02', 'C01'),
 (5, 'Handanovic', 'Samir', 'S02', 1984, '4.800.000', 'Slovena', 'POR', 'P04', 'C01'),
 (6, 'Skriniar', 'Milan', 'S02', 1995, '48.000.000', 'Slovacca', 'DIF', 'P03', 'C01'),
-(7, 'Sensi', 'Stefano', 'S02', 1995, '24.000.000', 'Italiana', 'CEN', 'P01', 'C01'),
 (8, 'Lukaku', 'Romelu', 'S02', 1993, '68.000.000', 'Belga', 'ATT', 'P04', 'C01'),
 (9, 'Donnarumma', 'Gianluigi', 'S03', 1999, '49.500.000', 'Italiana', 'POR', 'P03', 'C01'),
-(10, 'Romagnoli', 'Alessio', 'S03', 1995, '36.000.000', 'Italiana', 'DIF', 'P02', 'C01'),
-(11, 'Biglia', 'Lucas', 'S03', 1986, '2.800.000', 'Argentina', 'CEN', 'P04', 'C01'),
 (12, 'Ibrahimovic', 'Zlatan', 'S03', 1981, '2.800.000', 'Svedese', 'ATT', 'P03', 'C01'),
 (13, 'Courtois', 'Thibaut', 'S04', 1992, '48.000.000', 'Belga', 'POR', 'P04', 'C02'),
 (14, 'Ramos', 'Sergio', 'S04', 1986, '14.500.000', 'Spagnola', 'DIF', 'P01', 'C02'),
 (15, 'Modric', 'Luka', 'S04', 1985, '12.000.000', 'Croata', 'CEN', 'P03', 'C02'),
-(16, 'Karim', 'Benzema', 'S04', 1987, '32.000.000', 'Francese', 'ATT', 'P04', 'C02'),
 (17, 'ter Stegen', 'Marc-Andrè', 'S05', 1992, '72.000.000', 'Tedesca', 'POR', 'P02', 'C02'),
 (18, 'Piquè', 'Gerard', 'S05', 1987, '20.000.000', 'Spagnola', 'DIF', 'P04', 'C02'),
 (19, 'De Jong', 'Frenkie', 'S05', 1997, '72.000.000', 'Olandese', 'CEN', 'P04', 'C02'),
 (20, 'Messi', 'Lionel', 'S05', 1987, '112.000.000', 'Argentina', 'ATT', 'P03', 'C02'),
-(21, 'Becker', 'Alisson', 'S06', 1992, '72.000.000', 'Brasiliana', 'POR', 'P01', 'C03'),
 (22, 'van Dijk', 'Virgil', 'S06', 1991, '80.000.000', 'Olandese', 'DIF', 'P04', 'C03'),
 (23, 'Milner', 'James', 'S06', 1986, '6.500.000', 'Inglese', 'CEN', 'P03', 'C03'),
-(24, 'Salah', 'Mohamed', 'S06', 1992, '0', 'Egiziana', 'ATT', 'P01', 'C03'),
-(25, 'Bravo', 'Claudio', 'S07', 1993, '56000000', 'Cilena', 'POR', 'P03', 'C03'),
-(26, 'Mendy', 'Benjamin', 'S07', 1994, '28000000', 'Franco-Senegalese', 'DIF', 'P01', 'C03'),
-(27, 'De Bruyne', 'Kevin', 'S07', 1991, '120000000', 'Belga', 'CEN', 'P03', 'C03'),
-(28, 'Jesus', 'Gabriel', 'S07', 1997, '56000000', 'Brasiliana', 'ATT', 'P01', 'C03');
+(24, 'Salah', 'Mohamed', 'S06', 1992, '120.000.000', 'Egiziana', 'ATT', 'P01', 'C03'),
+(25, 'Bravo', 'Claudio', 'S07', 1993, '56.000.000', 'Cilena', 'POR', 'P03', 'C03'),
+(26, 'Mendy', 'Benjamin', 'S07', 1994, '28.000.000', 'Franco-Senegalese', 'DIF', 'P01', 'C03'),
+(27, 'De Bruyne', 'Kevin', 'S07', 1991, '120.000.000', 'Belga', 'CEN', 'P03', 'C03'),
+(28, 'Jesus', 'Gabriel', 'S07', 1997, '56.000.000', 'Brasiliana', 'ATT', 'P01', 'C03'),
+(30, 'Bernardeschi', 'Federico', 'S01', 1994, '20.000.000', 'Italiana', 'ATT', 'P03', 'C01'),
+(31, 'Martinez', 'Lautaro', 'S02', 1997, '70.000.000', 'Argentina', 'ATT', 'P03', 'C01'),
+(34, 'Benzema', 'Karim', 'S06', 1985, '30.000.000', 'Francese', 'ATT', 'P03', 'C02'),
+(35, 'Pinsoglio', 'Carlo', 'S01', 1990, '100.000', 'Italiana', 'POR', 'P03', 'C01'),
+(39, 'Aguero', 'Sergio', 'S07', 1988, '50.000.000', 'Argentina', 'CEN', 'P03', 'C03'),
+(41, 'Brozovic', 'Marcelo', 'S02', 1990, '35.000.000', 'Croata', 'CEN', 'P03', 'C01'),
+(42, 'Ranocchia', 'Andrea', 'S02', 1987, '1.000.000', 'Italiana', 'DIF', 'P03', 'C01'),
+(43, 'Firmino', 'Roberto', 'C06', 1992, '60.000.000', 'Brasiliana', 'ATT', 'P03', 'C03'),
+(45, 'Mane', 'Sadio', 'S06', 1994, '50.000.000', 'Senegalese', 'ATT', 'P03', 'C03'),
+(46, 'Balotelli', 'Mario', 'S05', 1990, '20.000.000', 'Italiana', 'ATT', 'P01', 'C02'),
+(47, 'Costa', 'Douglas', 'S01', 1993, '50.000.000', 'Brasiliana', 'ATT', 'P03', 'C01'),
+(48, 'Dybala', 'Paulo', 'S01', 1995, '60.000.000', 'Argentina', 'ATT', 'P03', 'C01');
 
 -- --------------------------------------------------------
 
@@ -185,7 +194,7 @@ ALTER TABLE `squadre`
 -- AUTO_INCREMENT per la tabella `calciatori`
 --
 ALTER TABLE `calciatori`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
